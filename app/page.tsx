@@ -1,9 +1,7 @@
 import Link from "next/link";
-import cx from "classnames";
 import Image from "next/image";
 import {
   ArrowTR,
-  Chevron,
   Exp1,
   Exp2,
   Exp3,
@@ -13,21 +11,10 @@ import {
   SocialsFB,
   SocialsIG,
 } from "@/components/svg";
-import { ReactNode } from "react";
 import Navbar from "@/components/navbar";
-
-const Container = ({ children }: { children: ReactNode }) => (
-  <div className="max-w-[1096px] mx-auto">{children}</div>
-);
-
-const LinkExplore = ({ children }: { children: ReactNode }) => (
-  <Link href="#" className="flex items-center gap-2">
-    <span className="border-2 border-dark rounded-full p-1">
-      <Chevron />
-    </span>
-    <span className="font-bold text-dark mt-0.5">{children}</span>
-  </Link>
-);
+import SectionArticles from "./section-articles";
+import Container from "@/components/container";
+import SectionDestinations from "./section-destinations";
 
 export default function Home() {
   const year = new Date().getFullYear();
@@ -120,102 +107,7 @@ export default function Home() {
         <Separator />
       </div>
       {/*  */}
-      <section className="px-4 py-10">
-        <Container>
-          <h1 className="font-unbounded font-bold text-dark text-xl mb-2">
-            Destinations
-          </h1>
-          <LinkExplore>EXPLORE MORE</LinkExplore>
-
-          {Array.from({ length: 4 }).map((_, idx) => (
-            <div
-              key={idx}
-              className={cx([
-                "flex flex-col sm:flex-row gap-4 my-16",
-                { "sm:flex-row-reverse": idx % 2 === 1 },
-              ])}
-            >
-              <div className="flex-1 relative aspect-[398/256]">
-                <Image
-                  src="https://picsum.photos/500/500"
-                  fill
-                  className="object-cover object-center"
-                  alt="image"
-                />
-              </div>
-              <div className="flex-1 flex flex-col gap-1">
-                <span className="text-dark text-xs">7 DAYS 6 NIGHTS</span>
-                <h1 className="font-unbounded font-bold text-aqua">
-                  Paradise Gateway: Labuan Bajo
-                </h1>
-                <div className="flex flex-col gap-1 sm:flex-col-reverse">
-                  <p className="text-dark text-xs">
-                    Labuan Bajo is a tropical paradise nestled in the
-                    westernmost part of Flores Island, Indonesia. With its
-                    stunning landscapes, crystal-clear waters, and vibrant
-                    marine life, it's a gateway to explore the mesmerizing
-                    Komodo National Park.
-                  </p>
-                  <span className="font-bold text-dark text-xs">
-                    Organized by Pandooin
-                  </span>
-                </div>
-                <div className="flex justify-between items-end mt-6">
-                  <div className="flex flex-col">
-                    <span className="text-xs">Start from</span>
-                    <span className="hidden sm:block font-unbounded font-medium line-through text-muted">
-                      IDR 9,999,999
-                    </span>
-                    <span className="text-[18px] text-aqua sm:text-xl font-medium font-unbounded">
-                      IDR 7,500,000
-                    </span>
-                  </div>
-                  <button className="btn btn-dark-outline">See Details</button>
-                </div>
-              </div>
-            </div>
-          ))}
-          <div className="flex gap-6 mt-10 overflow-x-auto md:overflow-x-clip">
-            {Array.from({ length: 4 }).map((_, idx) => (
-              <div
-                key={idx}
-                className="flex flex-col flex-1 min-w-[256px] md:min-w-0"
-              >
-                <div className="relative aspect-square">
-                  <Image
-                    src="https://picsum.photos/500/500"
-                    fill
-                    className="object-cover object-center"
-                    alt="image"
-                  />
-                </div>
-                <div className="my-4">
-                  <span className="text-xs text-dark">7 DAYS 6 NIGHTS</span>
-                  <h2 className="font-unbounded font-bold text-aqua">
-                    Paradise Gateway: Labuan Bajo
-                  </h2>
-                  <span className="text-xs text-dark font-bold">
-                    Organized by Pandooin
-                  </span>
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-xs text-dark">Start from</span>
-                  <span className="font-unbounded font-medium text-dark">
-                    IDR 5,200,000
-                  </span>
-                </div>
-                <button className="btn btn-dark-outline self-start mt-4">
-                  See Details
-                </button>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex justify-center sm:justify-end mt-16">
-            <LinkExplore>EXPLORE MORE</LinkExplore>
-          </div>
-        </Container>
-      </section>
+      <SectionDestinations />
       {/*  */}
       <section className="bg-tan py-8 px-4">
         <Container>
@@ -226,7 +118,7 @@ export default function Home() {
             {Array.from({ length: 3 }).map((_, idx) => (
               <div className="flex-1 aspect-[358/256] sm:aspect-square min-w-full sm:min-w-0 relative">
                 <Image
-                  src="https://picsum.photos/500/500"
+                  src={`https://picsum.photos/seed/${idx + 1}/350/350`}
                   fill
                   className="object-cover object-center"
                   alt="image"
@@ -242,7 +134,7 @@ export default function Home() {
               {Array.from({ length: 3 }).map((_, idx) => (
                 <div className="flex-1 aspect-[358/256] sm:aspect-square min-w-full sm:min-w-0 relative">
                   <Image
-                    src="https://picsum.photos/500/500"
+                    src={`https://picsum.photos/seed/${idx + 4}/350/350`}
                     fill
                     className="object-cover object-center"
                     alt="image"
@@ -279,39 +171,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          <h1 className="font-unbounded font-bold text-xl text-aqua mt-10">
-            Articles
-          </h1>
-          <p className="text-aqua">
-            Our curated writings, offering something for every reader.
-          </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {Array.from({ length: 5 }).map((_, idx) => (
-              <div
-                key={idx}
-                className={cx([
-                  "aspect-[4/3] relative",
-                  {
-                    "lg:row-span-2 lg:col-span-2 h-full": idx === 0,
-                  },
-                ])}
-              >
-                <Image
-                  src="https://picsum.photos/500/500"
-                  fill
-                  className="object-cover object-center"
-                  alt="image"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-aqua p-4">
-                  <h2 className="text-default-wh font-bold">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Animi fugit repellendus dicta
-                  </h2>
-                </div>
-              </div>
-            ))}
-          </div>
+          <SectionArticles />
         </Container>
       </section>
       {/*  */}
