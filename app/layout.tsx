@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Albert_Sans } from "next/font/google";
 import "./globals.css";
-import Providers from "./providers";
+import Providers from "../components/providers";
 
 const inter = Albert_Sans({ subsets: ["latin"] });
 
