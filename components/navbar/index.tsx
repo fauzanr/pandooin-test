@@ -68,7 +68,7 @@ const Navbar = () => {
             <div className="hidden lg:block">
               <div className="flex gap-4">
                 {navs.map((nav) => (
-                  <Link href="#">
+                  <Link href="#" key={nav}>
                     <div
                       className={cx(
                         "py-2 px-4 font-bold hover:border-b-2 hover:border-default-wh",

@@ -31,12 +31,16 @@ const SectionDestinations = () => {
         <LinkExplore>EXPLORE MORE</LinkExplore>
 
         {destinationsHighlight.map((item, idx) => (
-          <DestinationHighlightItem destination={item} idx={idx} />
+          <DestinationHighlightItem
+            destination={item}
+            idx={idx}
+            key={item.itinerary_id}
+          />
         ))}
         {/*  */}
         <div className="flex gap-6 mt-10 overflow-x-auto">
           {destinations.map((item) => (
-            <DestinationItem destination={item} />
+            <DestinationItem destination={item} key={item.itinerary_id} />
           ))}
         </div>
 

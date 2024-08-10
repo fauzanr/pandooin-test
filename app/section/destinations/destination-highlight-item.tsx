@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Destination } from "@/queries";
 import cx from "classnames";
 import Image from "next/image";
@@ -11,6 +11,24 @@ const DestinationHighlightItem = ({
   destination: Destination;
   idx: number;
 }) => {
+  const [currentImageIdx, setCurrentImageIdx] = useState(0);
+
+  const nextIdx = () => {
+    setCurrentImageIdx((curr) => {
+      return curr + 1 === (destination.related_galleries?.length || 0)
+        ? 0
+        : curr + 1;
+    });
+  };
+
+  useEffect(() => {
+    const interval = setInterval(nextIdx, 4000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
   return (
     <div
       key={destination.itinerary_id}
@@ -20,12 +38,21 @@ const DestinationHighlightItem = ({
       ])}
     >
       <div className="flex-1 relative aspect-[398/256]">
-        <Image
-          src={destination.related_galleries?.[0]?.src}
-          fill
-          className="object-cover object-center"
-          alt={destination.related_galleries?.[0]?.gallery_alt_text}
-        />
+        {destination.related_galleries?.map((gallery, idx) => (
+          <Image
+            key={gallery.gallery_id}
+            src={gallery.src}
+            fill
+            className={cx(
+              "object-cover object-center transition-opacity duration-300",
+              {
+                "opacity-0": idx !== currentImageIdx,
+                "opacity-100": idx === currentImageIdx,
+              }
+            )}
+            alt={destination.related_galleries?.[0]?.gallery_alt_text}
+          />
+        ))}
       </div>
       <div className="flex-1 flex flex-col gap-1">
         <span className="text-dark text-xs">
