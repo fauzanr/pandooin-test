@@ -25,10 +25,12 @@ const SectionDestinations = () => {
   return (
     <section className="px-4 py-10">
       <Container>
-        <h1 className="font-unbounded font-bold text-dark text-xl mb-2">
-          Destinations
-        </h1>
-        <LinkExplore>EXPLORE MORE</LinkExplore>
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+          <h1 className="font-unbounded font-bold text-dark text-xl">
+            Destinations
+          </h1>
+          <LinkExplore>EXPLORE MORE</LinkExplore>
+        </div>
 
         {destinationsHighlight.map((item, idx) => (
           <DestinationHighlightItem

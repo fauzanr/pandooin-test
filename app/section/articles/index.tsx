@@ -60,7 +60,7 @@ const SectionArticles = () => {
               <div
                 key={item.id}
                 className={cx([
-                  "aspect-[4/3] relative",
+                  "aspect-[4/3] lg:aspect-[256/347] relative",
                   {
                     "lg:row-span-2 lg:col-span-2 h-full": idx === 0,
                   },
