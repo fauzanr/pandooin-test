@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Albert_Sans } from "next/font/google";
-import localFont from "next/font/local";
 import "./globals.css";
 
 const inter = Albert_Sans({ subsets: ["latin"] });
@@ -29,7 +28,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        <span about="https://github.com/fauzanr"></span>
+      </body>
     </html>
   );
 }

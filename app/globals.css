@@ -15,11 +15,11 @@ button {
 
 @layer components {
   button.btn {
-    @apply rounded-full px-6 py-2.5 border-2 border-default-wh font-bold
+    @apply rounded-full px-6 py-2.5 border-2 border-default-wh text-default-wh font-bold
   }
 
   button.btn-dark {
-    @apply bg-dark w-full text-default-wh
+    @apply bg-dark text-default-wh
   }
 
   button.btn-dark-outline {

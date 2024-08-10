@@ -13,6 +13,7 @@ const config: Config = {
         tan: "#D6B66B",
         aqua: "#0B7373",
         dark: "#004040",
+        muted: "#B8B8B8",
       },
       fontFamily: {
         "the-signature": ["Signature", "ui-sans-serif"],
