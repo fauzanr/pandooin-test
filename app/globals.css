@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Signature";
+    src: url('../public/fonts/Thesignature.ttf');
+  }
+}
+
+button {
+  font-family: inherit;
+}
+
+@layer components {
+  button.btn {
+    @apply rounded-full px-6 py-2.5 border-2 border-default-wh font-bold
+  }
+
+  button.btn-dark {
+    @apply bg-dark w-full text-default-wh
+  }
+
+  button.btn-dark-outline {
+    @apply text-dark border-dark
+  }
+
+  button.btn:hover {
+    @apply bg-tan border-tan text-default-wh;
+  }
+}
